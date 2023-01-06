@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Balance</h1>
+    <ul>
+    <% payments.forEach( el => { %>
+        <li class='payment' data-id='<%=el._id%>'>
+            <span class='not'><%= el.paymentDescription %></span>
+            <span class='not'><%= el.paymentDate %></span>
+            <span class='del'> Delete </span>
+        </li>
+    <% }) %>    
+    </ul>
+
+    <h2>Sum total of expenses: <%= sumTotal %></h2>
+
+    <form action="/balance/addPayment" method='POST'>
+        <input type="text" placeholder="Enter payment description" name='paymentDescription'>
+        <input type="date" placeholder="Enter payment date" name='paymentDate'>
+        <input type="submit">
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
